@@ -1,0 +1,12 @@
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.MvcFramework.deps.json
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.MvcFramework.dll
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.MvcFramework.pdb
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.HTTP.dll
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.HTTP.pdb
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csprojAssemblyReference.cache
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.AssemblyInfoInputs.cache
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.AssemblyInfo.cs
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csproj.CoreCompileInputs.cache
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csproj.CopyComplete
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.dll
+C:\C#WEB\csharp-web-exam-preparation\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.pdb

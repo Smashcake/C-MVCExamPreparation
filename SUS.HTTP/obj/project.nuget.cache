@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "iMFJt/e+9f6pTwDAfIOR1eBfFLs4y2W+bkGybGSVHunoJyrMviRq8CoNNZ6NUTbBCe9lfCtUuDs3Qjvn7728GA==",
+  "success": true,
+  "projectFilePath": "C:\\C#WEB\\csharp-web-exam-preparation\\SUS.HTTP\\SUS.HTTP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Smashcake\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
