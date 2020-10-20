@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Apps"
+    "\\Apps",
+    "\\Apps\\BattleCards",
+    "\\Apps\\Suls"
   ],
-  "SelectedNode": "\\SUS.sln",
+  "SelectedNode": "\\Apps\\BattleCards",
   "PreviewInSolutionExplorer": false
 }
