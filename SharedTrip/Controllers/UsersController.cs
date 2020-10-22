@@ -39,7 +39,7 @@ namespace SharedTrip.Controllers
             }
 
             this.SignIn(user);
-            return this.Redirect("/");
+            return this.Redirect("/Trips/All");
         }
 
         public HttpResponse Register()
