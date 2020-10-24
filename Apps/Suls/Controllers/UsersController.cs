@@ -1,7 +1,7 @@
-﻿using Suls.Services;
-using Suls.ViewModels.Users;
+﻿using SUS.MvcFramework;
 using SUS.HTTP;
-using SUS.MvcFramework;
+using Suls.ViewModels.Users;
+using Suls.Services;
 using System.ComponentModel.DataAnnotations;
 
 namespace Suls.Controllers
@@ -26,10 +26,15 @@ namespace Suls.Controllers
         }
 
         [HttpPost]
-        public HttpResponse Login(string username, string password)
+        public HttpResponse Login(LoginInputModel model)
         {
-            var userId = this.usersService.GetUserId(username, password);
-            if (userId == null)
+            if (this.IsUserSignedIn())
+            {
+                return this.Redirect("/");
+            }
+
+            var userId = this.usersService.GetUserId(model);
+            if(userId == null)
             {
                 return this.Error("Invalid username or password.");
             }
@@ -49,51 +54,46 @@ namespace Suls.Controllers
         }
 
         [HttpPost]
-        public HttpResponse Register(RegisterInputModel input)
+        public HttpResponse Register(RegisterInputModel model)
         {
-            if (string.IsNullOrEmpty(input.Username) || input.Username.Length < 5 || input.Username.Length > 20)
-            {
-                return this.Error("Username is required and should be between 5 and 20 characters.");
-            }
-
-            if (!this.usersService.IsUsernameAvailable(input.Username))
-            {
-                return this.Error("Username already taken.");
-            }
-
-            if (string.IsNullOrEmpty(input.Email) || !new EmailAddressAttribute().IsValid(input.Email))
-            {
-                return this.Error("Invalid email address.");
-            }
-
-            if (!this.usersService.IsEmailAvailable(input.Email))
-            {
-                return this.Error("Email already taken.");
-            }
-
-            if (string.IsNullOrEmpty(input.Password) || input.Password.Length < 6 || input.Password.Length > 20)
-            {
-                return this.Error("Password should be between 6 and 20 charaters.");
-            }
-
-            if (input.Password != input.ConfirmPassword)
-            {
-                return this.Error("Passwords do not match.");
-            }
-
-            this.usersService.CreateUser(input.Username, input.Email, input.Password);
-            return this.Redirect("/Users/Login");
-        }
-
-        public HttpResponse Logout()
-        {
-            if (!this.IsUserSignedIn())
+            if (this.IsUserSignedIn())
             {
                 return this.Redirect("/");
             }
 
-            this.SignOut();
+            if(string.IsNullOrWhiteSpace(model.Username) || model.Username.Length < 5 || model.Username.Length > 20)
+            {
+                return this.Error("Invalid username input.Username must be between 5 and 20 characters.");
+            }
+            if(string.IsNullOrWhiteSpace(model.Password) || model.Password.Length < 6 || model.Password.Length > 20)
+            {
+                return this.Error("Invalid password input.Password must be between 6 and 20 characters.");
+            }
+            if(string.IsNullOrWhiteSpace(model.Email) || !new EmailAddressAttribute().IsValid(model.Email))
+            {
+                return this.Error("Invalid email input.");
+            }
+            if(model.Password != model.ConfirmPassword)
+            {
+                return this.Error("Passwords should match.");
+            }
+            if (!this.usersService.isEmailAvailable(model.Email))
+            {
+                return this.Error("Email already taken.");
+            }
+            if (!this.usersService.isUsernameAvailable(model.Username))
+            {
+                return this.Error("Username already taken.");
+            }
+
+            this.usersService.RegisterUser(model);
             return this.Redirect("/");
+        }
+
+        public HttpResponse Logout()
+        {
+            this.SignOut();
+            return this.Redirect("/Users/Login");
         }
     }
 }

@@ -94,11 +94,11 @@ namespace Suls.Migrations
             modelBuilder.Entity("Suls.Data.Submission", b =>
                 {
                     b.HasOne("Suls.Data.Problem", "Problem")
-                        .WithMany("Submissions")
+                        .WithMany()
                         .HasForeignKey("ProblemId");
 
                     b.HasOne("Suls.Data.User", "User")
-                        .WithMany("Submissions")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618

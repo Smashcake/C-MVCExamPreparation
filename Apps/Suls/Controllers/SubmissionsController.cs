@@ -10,9 +10,7 @@ namespace Suls.Controllers
         private readonly IProblemsService problemsService;
         private readonly ISubmissionsService submissionsService;
 
-        public SubmissionsController(
-            IProblemsService problemsService,
-            ISubmissionsService submissionsService)
+        public SubmissionsController(IProblemsService problemsService,ISubmissionsService submissionsService)
         {
             this.problemsService = problemsService;
             this.submissionsService = submissionsService;
@@ -28,26 +26,25 @@ namespace Suls.Controllers
             var viewModel = new CreateViewModel
             {
                 ProblemId = id,
-                Name = this.problemsService.GetNameById(id),
+                Name = this.problemsService.GetNameById(id)
             };
             return this.View(viewModel);
         }
 
         [HttpPost]
-        public HttpResponse Create(string problemId, string code)
+        public HttpResponse Create(string problemId,string code)
         {
             if (!this.IsUserSignedIn())
             {
                 return this.Redirect("/Users/Login");
             }
 
-            if (string.IsNullOrEmpty(code) || code.Length < 30 || code.Length > 800)
+            if(string.IsNullOrWhiteSpace(code) || code.Length < 30 || code.Length > 800)
             {
-                return this.Error("Code should be between 30 and 800 characters long.");
+                return this.Error("Invalid code length.");
             }
 
-            var userId = this.GetUserId();
-            this.submissionsService.Create(problemId, userId, code);
+            this.submissionsService.Create(problemId, this.GetUserId() ,code);
             return this.Redirect("/");
         }
 

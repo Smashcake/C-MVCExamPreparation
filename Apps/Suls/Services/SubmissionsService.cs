@@ -1,4 +1,5 @@
 ﻿using Suls.Data;
+using Suls.ViewModels.Submissions;
 using System;
 using System.Linq;
 
@@ -15,26 +16,26 @@ namespace Suls.Services
             this.random = random;
         }
 
-        public void Create(string problemId, string userId, string code)
+        public void Create(string id, string userId, string code)
         {
-            var problemMaxPoints = this.db.Problems
-                .Where(x => x.Id == problemId)
-                .Select(x => x.Points).FirstOrDefault();
-            var submission = new Submission
+            var problem = this.db.Problems.FirstOrDefault(p => p.Id == id);
+
+            var submission = new Submission()
             {
-                Code = code,
-                ProblemId = problemId,
+                ProblemId = id,
                 UserId = userId,
-                AchievedResult = (ushort)this.random.Next(0, problemMaxPoints + 1),
+                Code = code,
                 CreatedOn = DateTime.UtcNow,
+                AchievedResult = (ushort)random.Next(0,problem.Points + 1)
             };
+
             this.db.Submissions.Add(submission);
             this.db.SaveChanges();
         }
 
         public void Delete(string id)
         {
-            var submission = this.db.Submissions.Find(id);
+            var submission = this.db.Submissions.FirstOrDefault(s => s.Id == id);
             this.db.Submissions.Remove(submission);
             this.db.SaveChanges();
         }

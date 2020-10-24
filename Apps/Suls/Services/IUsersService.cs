@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Suls.ViewModels.Users;
 
 namespace Suls.Services
 {
     public interface IUsersService
     {
-        void CreateUser(string username, string email, string password);
+        bool isUsernameAvailable(string username);
 
-        string GetUserId(string username, string password);
+        bool isEmailAvailable(string email);
 
-        bool IsUsernameAvailable(string username);
+        string GetUserId(LoginInputModel model);
 
-        bool IsEmailAvailable(string email);
+        void RegisterUser(RegisterInputModel model);
     }
 }

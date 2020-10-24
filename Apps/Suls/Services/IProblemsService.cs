@@ -5,12 +5,12 @@ namespace Suls.Services
 {
     public interface IProblemsService
     {
-        void Create(string name, ushort points);
+        IEnumerable<AllProblemsViewModel> GetAllProblems();
 
-        IEnumerable<HomePageProblemViewModel> GetAll();
+        void CreateProblem(CreateProblemInputModel model);
+
+        ProblemDetailsViewModel Details(string problemId);
 
         string GetNameById(string id);
-
-        ProblemViewModel GetById(string id);
     }
 }

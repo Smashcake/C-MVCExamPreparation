@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PYE304YVHyck13oMDZ3JXXSgqvFicxhOLmgvyUOTVdptoj/r5pDnDqiDFgNY1MX27yqKyEHxAs3WwRJbE84P8A==",
+  "dgSpecHash": "VIqrgs9k+AjChk3TLnh72hfUhNvFUU+v5hWogcVTWPFCc8jSkxjZIkButpzuwuzjJ+dJTsjFRtLuU+WwHDEztA==",
   "success": true,
   "projectFilePath": "C:\\C#WEB\\csharp-web-exam-preparation\\Apps\\Suls\\Suls.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.9\\microsoft.entityframeworkcore.design.3.1.9.nupkg.sha512",
     "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.9\\microsoft.entityframeworkcore.relational.3.1.9.nupkg.sha512",
     "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.9\\microsoft.entityframeworkcore.sqlserver.3.1.9.nupkg.sha512",
+    "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.9\\microsoft.entityframeworkcore.tools.3.1.9.nupkg.sha512",
     "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.9\\microsoft.extensions.caching.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.9\\microsoft.extensions.caching.memory.3.1.9.nupkg.sha512",
     "C:\\Users\\Smashcake\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",

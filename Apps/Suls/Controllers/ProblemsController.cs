@@ -1,19 +1,17 @@
-﻿using Suls.Services;
+﻿using SUS.MvcFramework;
 using SUS.HTTP;
-using SUS.MvcFramework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Suls.Services;
+using Suls.ViewModels.Problems;
 
 namespace Suls.Controllers
 {
     public class ProblemsController : Controller
     {
-        private readonly IProblemsService problemsService;
+        private readonly IProblemsService problemService;
 
-        public ProblemsController(IProblemsService problemsService)
+        public ProblemsController(IProblemsService problemService)
         {
-            this.problemsService = problemsService;
+            this.problemService = problemService;
         }
 
         public HttpResponse Create()
@@ -27,36 +25,30 @@ namespace Suls.Controllers
         }
 
         [HttpPost]
-        public HttpResponse Create(string name, int points)
+        public HttpResponse Create(CreateProblemInputModel model)
         {
             if (!this.IsUserSignedIn())
             {
-                return this.Redirect("/Users/Login");
+                return this.Redirect("Users/Login");
             }
 
-            if (string.IsNullOrEmpty(name) || name.Length < 5 || name.Length > 20)
+            if(string.IsNullOrWhiteSpace(model.Name) || model.Name.Length < 5 || model.Name.Length > 20)
             {
-                return this.Error("Name should be between 5 and 20 characters.");
+                return this.Error("Invalid problem name.Problem name should be between 5 and 20 characters.");
             }
-
-            if (points < 50 || points > 300)
+            if(model.Points < 50 || model.Points > 300)
             {
-                return this.Error("Points should be between 50 and 300.");
+                return this.Error("Invalid problem points.Problem points should be between 50 and 300.");
             }
 
-            this.problemsService.Create(name, (ushort)points);
+            this.problemService.CreateProblem(model);
             return this.Redirect("/");
         }
 
         public HttpResponse Details(string id)
         {
-            if (!this.IsUserSignedIn())
-            {
-                return this.Redirect("/Users/Login");
-            }
-
-            var viewModel = this.problemsService.GetById(id);
-            return this.View(viewModel);
+            var problemDetails = this.problemService.Details(id);
+            return this.View(problemDetails);
         }
     }
 }

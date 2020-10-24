@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Suls.ViewModels.Users
+﻿namespace Suls.ViewModels.Users
 {
     public class RegisterInputModel
     {

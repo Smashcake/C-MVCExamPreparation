@@ -1,4 +1,5 @@
 ﻿using Suls.Data;
+using Suls.ViewModels.Users;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,33 +15,34 @@ namespace Suls.Services
             this.db = db;
         }
 
-        public void CreateUser(string username, string email, string password)
+        public string GetUserId(LoginInputModel model)
         {
-            var user = new User
-            {
-                Email = email,
-                Username = username,
-                Password = ComputeHash(password),
-            };
-            this.db.Users.Add(user);
-            this.db.SaveChanges();
-        }
-
-        public string GetUserId(string username, string password)
-        {
-            var passwordHash = ComputeHash(password);
-            var user = this.db.Users.FirstOrDefault(x => x.Username == username && x.Password == passwordHash);
+            var hashedPassword = ComputeHash(model.Password);
+            var user = this.db.Users.Where(u => u.Password == hashedPassword && u.Username == model.Username).FirstOrDefault();
             return user?.Id;
         }
 
-        public bool IsEmailAvailable(string email)
+        public bool isEmailAvailable(string email)
         {
-            return !this.db.Users.Any(x => x.Email == email);
+            return !this.db.Users.Any(u => u.Email == email); 
         }
 
-        public bool IsUsernameAvailable(string username)
+        public bool isUsernameAvailable(string username)
         {
-            return !this.db.Users.Any(x => x.Username == username);
+            return !this.db.Users.Any(u => u.Username == username);
+        }
+
+        public void RegisterUser(RegisterInputModel model)
+        {
+            var user = new User
+            {
+                Username = model.Username,
+                Password = ComputeHash(model.Password),
+                Email = model.Email
+            };
+
+            this.db.Users.Add(user);
+            this.db.SaveChanges();
         }
 
         private static string ComputeHash(string input)

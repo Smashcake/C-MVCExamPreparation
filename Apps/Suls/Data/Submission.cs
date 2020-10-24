@@ -16,16 +16,17 @@ namespace Suls.Data
         [MaxLength(800)]
         public string Code { get; set; }
 
+        [Required]
         public ushort AchievedResult { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
-        public string UserId { get; set; }
-
-        public virtual User User { get; set; }
+        public virtual Problem Problem { get; set; }
 
         public string ProblemId { get; set; }
 
-        public virtual Problem Problem { get; set; }
+        public virtual User User { get; set; }
+
+        public string UserId { get; set; }
     }
 }

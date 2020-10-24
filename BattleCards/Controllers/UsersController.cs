@@ -41,13 +41,13 @@ namespace BattleCards.Controllers
 
         public HttpResponse Logout()
         {
-            if (this.IsUserSignedIn())
+            if (!this.IsUserSignedIn())
             {
-                this.SignOut();
-                return this.Redirect("/");
+                return this.Error("You have to be logged in in order to logout.");
             }
 
-            return this.Error("You have to be logged in in order to logout.");
+            this.SignOut();
+            return this.Redirect("/Users/Login");
         }
 
         public HttpResponse Register()

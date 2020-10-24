@@ -6,11 +6,13 @@ namespace Suls.Data
     {
         public ApplicationDbContext()
         {
+
         }
 
-        public ApplicationDbContext(DbContextOptions db)
-            : base(db)
+        public ApplicationDbContext(DbContextOptions dbContextOptions)
+            : base(dbContextOptions)
         {
+
         }
 
         public DbSet<User> Users { get; set; }
@@ -23,8 +25,9 @@ namespace Suls.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=Suls;Integrated Security=True;");
+                optionsBuilder.UseSqlServer(@"Server=SMASHCAKEPC\SQLEXPRESS;Database=Suls;Integrated Security=True;");
             }
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

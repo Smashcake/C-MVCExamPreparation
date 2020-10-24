@@ -1,8 +1,6 @@
-﻿using Suls.Services;
-using Suls.ViewModels.Problems;
+﻿using SUS.MvcFramework;
 using SUS.HTTP;
-using SUS.MvcFramework;
-using System.Collections.Generic;
+using Suls.Services;
 
 namespace Suls.Controllers
 {
@@ -10,7 +8,7 @@ namespace Suls.Controllers
     {
         private readonly IProblemsService problemsService;
 
-        public HomeController(IProblemsService problemsService)
+        public HomeController(IProblemsService problemsService) 
         {
             this.problemsService = problemsService;
         }
@@ -20,13 +18,11 @@ namespace Suls.Controllers
         {
             if (this.IsUserSignedIn())
             {
-                var viewModel = this.problemsService.GetAll();
-                return this.View(viewModel, "IndexLoggedIn");
+                var problems = this.problemsService.GetAllProblems();
+                return this.View(problems, "IndexLoggedIn");
             }
-            else
-            {
-                return this.View();
-            }
+
+            return this.View();
         }
     }
 }
